@@ -22,11 +22,17 @@ export const character = {
   }
   
 export function extractData(object) {
-    const { special: array } = object;
-    array.forEach(element => { 
-        const { id: id, name: name, icon: icon, description: description = 'Описание недоступно'} = element;
-        let attackChoice = [];
-        attackChoice.push(id, name, icon, description);
-        return attackChoice;
-    })   
-}
+    const { special: attacks } = object;
+    attacks.length;
+    const attackInfo = [];
+    attacks.forEach(attack => { 
+      for (let property in attack) {
+        let attackProperty = attack[property];
+        attackInfo.push(attackProperty);
+      }
+    });
+    return attackInfo;
+};   
+
+
+console.log(extractData(character));
