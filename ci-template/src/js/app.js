@@ -26,13 +26,13 @@ export function extractData(object) {
     attacks.length;
     const attackInfo = [];
     attacks.forEach(attack => { 
-      for (let property in attack) {
-        let attackProperty = attack[property];
-        attackInfo.push(attackProperty);
-      }
+        const { id, name, icon, description = 'Описание недоступно'} = attack;
+        let item = {};
+        item.id = id;
+        item.name = name;
+        item.icon = icon;
+        item.description = description;
+        attackInfo.push(item);
     });
     return attackInfo;
 };   
-
-
-console.log(extractData(character));
